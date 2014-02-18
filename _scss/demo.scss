@@ -1,0 +1,23 @@
+:root {
+	font-size: 62.5%;
+}
+
+$hoge: #000;
+
+.rempx($rem: 1.6rem, $px: 16px) {
+	font-size: $rem;
+	font-size: $px;
+}
+
+body {
+	color: $hoge;
+	@include rempx();
+}
+
+h1 {
+	color: lighten($hoge, 69%);
+}
+
+div {
+	box-sizing: border-box; 
+}
