@@ -17,17 +17,19 @@ var paths = {
 	"tplDir": "_templates/*.jade", // change your template extension.
 	"lessDir": "_less/*.less",
 	"scssDir": "_scss/*.scss",
-	"cssDir": "dist/css",
 	"imgDir": "_images/**",
 	"rootDir": "dist",
+	"cssDir": "dist/css",
 	"imgsDir": "dist/images"
-}
+}	
 
 gulp.task('connect', connect.server({
 	root: ['dist'],
 	port: 1337,
 	livereload: true,
-	open: {} // Open default browser.
+	open: {
+		"browser": "Duo" // {} set to blank, open default browser.
+		}
 	})
 );
 
@@ -70,13 +72,12 @@ gulp.task('image', function() {
 		.pipe(gulp.dest(paths.imgsDir));
 });
 
-
 // If you would like to use Sass/SCSS, uncomment 'less' to 'scss'.
 
 gulp.task('watch', function() {
 	gulp.watch([paths.tplDir], ['html']);
-	// gulp.watch([paths.lessDir], ['less']);
-	gulp.watch([paths.scssDir], ['scss']);
+	gulp.watch([paths.lessDir], ['less']);
+	// gulp.watch([paths.scssDir], ['scss']);
 	gulp.watch([paths.imgDir], ['image']);
 });
 
