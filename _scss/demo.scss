@@ -4,14 +4,14 @@
 
 $hoge: #000;
 
-.rempx($rem: 1.6rem, $px: 16px) {
+@mixin rempx($rem: 1.6rem, $px: 16px) {
 	font-size: $rem;
 	font-size: $px;
 }
 
 body {
 	color: $hoge;
-	@include rempx();
+	@include rempx(1.8rem, 18px);
 }
 
 h1 {

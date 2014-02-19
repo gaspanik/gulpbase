@@ -1,7 +1,7 @@
 # Gulpbase
 
 Sample gulpfile.js for HTML template (default: Jade) and CSS preprocessors (less or scss, default: less).   
-Auto-prefixer and Live-reload support.
+Auto-prefixer and Live-reload, Imagemin support.
 
 ## Usage
 
