@@ -1,6 +1,6 @@
 var gulp = require('gulp')
 ,	gutil = require('gulp-util')
-,	jade = require('gulp-jade') // change your favorite HTML template engine. 
+,	jade = require('gulp-jade') // change your favorite HTML template engine.
 ,	prettify = require('gulp-prettify')
 ,	less = require('gulp-less')
 ,	sass = require('gulp-ruby-sass')
@@ -21,7 +21,7 @@ var paths = {
 	"rootDir": "dist",
 	"cssDir": "dist/css",
 	"imgsDir": "dist/images"
-}	
+}
 
 gulp.task('connect', connect.server({
 	root: ['dist'],
@@ -45,7 +45,9 @@ gulp.task('html', function() {
 
 gulp.task('less', function() {
 	return gulp.src(paths.lessDir)
-		.pipe(less())
+		.pipe(less({
+				sourceMap: true // If you don't need sourcemaps, set to false.
+		}))
 		.pipe(prefix('last 2 version'))
 		.pipe(gulp.dest(paths.cssDir))
 		.pipe(rename({suffix: '.min'}))
@@ -56,6 +58,8 @@ gulp.task('less', function() {
 
 gulp.task('scss', function() {
 	return gulp.src(paths.scssDir)
+		// If you need sourcemaps, pls. rewrite below options to {style: 'expanded' , sourcemap: true} .
+		// But you need to install sass 3.3 (gem install --pre sass)
 		.pipe(sass({ style: 'expanded' }))
 		.pipe(prefix('last 2 version'))
 		.pipe(gulp.dest(paths.cssDir))
