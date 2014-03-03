@@ -46,7 +46,7 @@ gulp.task('html', function() {
 gulp.task('less', function() {
 	return gulp.src(paths.lessDir)
 		.pipe(less({
-				sourceMap: true // If you don't need sourcemaps, set to false.
+			sourceMap: true // If you don't need sourcemaps, set to false.
 		}))
 		.pipe(prefix('last 2 version'))
 		.pipe(gulp.dest(paths.cssDir))
@@ -60,6 +60,7 @@ gulp.task('scss', function() {
 	return gulp.src(paths.scssDir)
 		// If you need sourcemaps, pls. rewrite below options to {style: 'expanded' , sourcemap: true} .
 		// But you need to install sass 3.3 (gem install --pre sass)
+		// If you use bunde install, run 'bundle install --path yourpath' and rewrite option to {bundleExec: true, style: 'expanded' , sourcemap: true}.
 		.pipe(sass({ style: 'expanded' }))
 		.pipe(prefix('last 2 version'))
 		.pipe(gulp.dest(paths.cssDir))
