@@ -1,6 +1,6 @@
 {
   "name": "gulpbase",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "gulp-changed": "*",
     "gulp-imagemin": "*",
     "gulp-prettify": "*",
-    "gulp-minify-css": "*",
+    "gulp-csso": "*",
     "gulp-rename": "*",
     "gulp-autoprefixer": "*",
     "gulp-ruby-sass": "*",
