@@ -1,6 +1,6 @@
 {
   "name": "gulpbase",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
@@ -10,7 +10,8 @@
   "author": "Masaaki Komori",
   "license": "MIT",
   "devDependencies": {
-    "gulp-connect": "*",
+    "browser-sync": "*",
+    "gulp-load-plugins": "*",
     "gulp-changed": "*",
     "gulp-imagemin": "*",
     "gulp-prettify": "*",
@@ -18,9 +19,10 @@
     "gulp-rename": "*",
     "gulp-autoprefixer": "*",
     "gulp-ruby-sass": "*",
+    "gulp-sourcemaps": "*",
     "gulp-less": "*",
     "gulp-jade": "*",
-    "gulp-util": "*",
+    "marked": "*",
     "gulp": "*"
   }
 }

@@ -3,6 +3,9 @@ extend _layout
 block content
 	h1 Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 
+	:markdown
+		**Lorem ipsum dolor sit amet**, *consectetuer* adipiscing elit.
+
 	- var user = { name: 'John' }
 	if user
 	div.welcomebox
@@ -18,6 +21,7 @@ block content
 			| Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, 
 			a(href='#') Donec non enim
 			| in turpis pulvinar facilisis. Ut felis.
+
 	h2 Header Level 2
 	ol
 		li Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
