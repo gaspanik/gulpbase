@@ -13,14 +13,14 @@ Run gulp.
 
 	$ npm start
 
-You would like to autoprefix specific browsers, open gulpfile.js and edit '.pipe(prefix())' line.
+You would like to autoprefix specific browsers, open gulpfile.js and edit '.pipe(autoprefixer())' line.
 
-> .pipe(prefix('last 2 version'))
+> .pipe($.autoprefixer('last 2 version'))
 
 to
 
-> .pipe(prefix('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+> .pipe($.autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
 
-## Chagelog 0.0.5
+## Chagelog 0.0.6
 
-* Change to Browser-Sync. Markdown support.
+* Minor tweaks.

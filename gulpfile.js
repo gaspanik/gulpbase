@@ -1,10 +1,11 @@
 var gulp = require('gulp'),
-  sass = require('gulp-ruby-sass'),
-  prefix = require('gulp-autoprefixer'),
-  $ = require('gulp-load-plugins')(),
+  $ = require('gulp-load-plugins')({
+    pattern: ['gulp-*', 'gulp.*'],
+    replaceString: /\bgulp[\-.]/
+  }),
   browserSync = require('browser-sync');
 
-/*  Set your environment */
+/*  Config for your environment */
 
 var paths = {
   "tplDir": "_templates/*.jade", // change your template extension.
@@ -22,7 +23,7 @@ gulp.task('bs', function() {
       baseDir: paths.rootDir
     },
     notify: true,
-    xip: true
+    xip: false
   });
 });
 
@@ -30,9 +31,9 @@ gulp.task('html', function() {
   return gulp.src(paths.tplDir)
     .pipe($.jade())
     .pipe(gulp.dest(paths.rootDir))
-  // If you need prettify HTML, uncomment below 2 lines.
-  // .pipe($.prettify())
-  // .pipe(gulp.dest('dist'))
+ // If you need prettify HTML, uncomment below 2 lines.
+ // .pipe($.prettify())
+ // .pipe(gulp.dest('dist'))
     .pipe(browserSync.reload({
       stream: true
     }));
@@ -42,7 +43,7 @@ gulp.task('less', function() {
   return gulp.src(paths.lessDir)
     .pipe($.sourcemaps.init())
     .pipe($.less())
-    .pipe(prefix('last 2 version'))
+    .pipe($.autoprefixer('last 2 version'))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest(paths.cssDir))
     .pipe($.rename({
@@ -58,12 +59,12 @@ gulp.task('less', function() {
 
 gulp.task('scss', function() {
   return gulp.src(paths.scssDir)
-    .pipe(sass({
+    .pipe($.rubySass({
       style: 'expanded',
       // sourcemap: true,
       // sourcemapPath: paths.scssDir
     }))
-    .pipe(prefix('last 2 version'))
+    .pipe($.autoprefixer('last 2 version'))
     .pipe(gulp.dest(paths.cssDir))
     .pipe($.rename({
       suffix: '.min'
@@ -85,7 +86,7 @@ gulp.task('image', function() {
   .pipe(gulp.dest(paths.imgsDir));
 });
 
-// If you would like to use Sass/SCSS, uncomment 'less' to 'scss'.
+// If you would like to use Sass/SCSS, toggle 'less' to 'scss'.
 
 gulp.task('watch', function() {
   gulp.watch([paths.tplDir], ['html']);
