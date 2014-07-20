@@ -86,7 +86,7 @@ gulp.task('scripts', function() {
 
 gulp.task('image', function() {
   return gulp.src(paths.imgSrc)
-    .pipe($.changed(paths.imgSrc))
+    .pipe($.newer(paths.imgDir))
     .pipe($.imagemin({
       optimizationLevel: 3
     })) // See gulp-imagemin page.
