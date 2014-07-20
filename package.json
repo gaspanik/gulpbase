@@ -1,6 +1,6 @@
 {
   "name": "gulpbase",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
@@ -12,6 +12,8 @@
   "devDependencies": {
     "browser-sync": "*",
     "gulp-load-plugins": "*",
+    "gulp-concat": "*",
+    "gulp-uglify": "*",
     "gulp-changed": "*",
     "gulp-imagemin": "*",
     "gulp-prettify": "*",

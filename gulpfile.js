@@ -8,13 +8,13 @@ var gulp = require('gulp'),
 /*  Config for your environment */
 
 var paths = {
-  "tplDir": "_templates/*.jade", // change your template extension.
-  "lessDir": "_less/*.less",
-  "scssDir": "_scss/*.scss",
-  "imgDir": "_images/**",
-  "rootDir": "dist",
-  "cssDir": "dist/css",
-  "imgsDir": "dist/images"
+  "tplSrc": "_templates/*.jade", // change your template extension.
+  "lessSrc": "_less/*.less",
+  "scssSrc": "_scss/*.scss",
+  "jsSrc": "_js/*.js",
+  "imgSrc": "_images/**",
+  "rootDir": "dist/",
+  "imgDir": "dist/images/"
 }
 
 gulp.task('bs', function() {
@@ -28,7 +28,7 @@ gulp.task('bs', function() {
 });
 
 gulp.task('html', function() {
-  return gulp.src(paths.tplDir)
+  return gulp.src(paths.tplSrc)
     .pipe($.jade())
     .pipe(gulp.dest(paths.rootDir))
  // If you need prettify HTML, uncomment below 2 lines.
@@ -40,17 +40,17 @@ gulp.task('html', function() {
 });
 
 gulp.task('less', function() {
-  return gulp.src(paths.lessDir)
+  return gulp.src(paths.lessSrc)
     .pipe($.sourcemaps.init())
-    .pipe($.less())
-    .pipe($.autoprefixer('last 2 version'))
+      .pipe($.less())
+      .pipe($.autoprefixer('last 2 version'))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest(paths.cssDir))
+    .pipe(gulp.dest(paths.rootDir + 'css'))
     .pipe($.rename({
       suffix: '.min'
     }))
     .pipe($.csso())
-    .pipe(gulp.dest(paths.cssDir))
+    .pipe(gulp.dest(paths.rootDir + 'css'))
     .pipe(browserSync.reload({
       stream: true,
       once: true
@@ -58,43 +58,50 @@ gulp.task('less', function() {
 });
 
 gulp.task('scss', function() {
-  return gulp.src(paths.scssDir)
+  return gulp.src(paths.scssSrc)
     .pipe($.rubySass({
       style: 'expanded',
-      // sourcemap: true,
-      // sourcemapPath: paths.scssDir
     }))
     .pipe($.autoprefixer('last 2 version'))
-    .pipe(gulp.dest(paths.cssDir))
+    .pipe(gulp.dest(paths.rootDir + 'css'))
     .pipe($.rename({
       suffix: '.min'
     }))
     .pipe($.csso())
-    .pipe(gulp.dest(paths.cssDir))
+    .pipe(gulp.dest(paths.rootDir + 'css'))
     .pipe(browserSync.reload({
       stream: true,
       once: true
     }));
 });
 
+gulp.task('scripts', function() {
+  return gulp.src(paths.jsSrc)
+    .pipe($.sourcemaps.init())
+      .pipe($.uglify())
+      .pipe($.concat('all.js'))
+    .pipe($.sourcemaps.write())
+    .pipe(gulp.dest(paths.rootDir + 'js'));
+});
+
 gulp.task('image', function() {
-  return gulp.src(paths.imgDir)
-    .pipe($.changed(paths.imgsDir))
+  return gulp.src(paths.imgSrc)
+    .pipe($.changed(paths.imgSrc))
     .pipe($.imagemin({
       optimizationLevel: 3
     })) // See gulp-imagemin page.
-  .pipe(gulp.dest(paths.imgsDir));
+  .pipe(gulp.dest(paths.imgDir));
 });
 
 // If you would like to use Sass/SCSS, toggle 'less' to 'scss'.
 
 gulp.task('watch', function() {
-  gulp.watch([paths.tplDir], ['html']);
-  gulp.watch([paths.lessDir], ['less']);
-  // gulp.watch([paths.scssDir], ['scss']);
-  gulp.watch([paths.imgDir], ['image']);
+  gulp.watch([paths.tplSrc], ['html']);
+  gulp.watch([paths.lessSrc], ['less']);
+  // gulp.watch([paths.scssSrc], ['scss']);
+  gulp.watch([paths.imgSrc], ['image']);
 });
 
-// If you would like to use Sass/SCSS, rewrite 'less' to 'scss'.
+// If you would like to use Sass/SCSS, toggle 'less' to 'scss'.
 
-gulp.task('default', ['image', 'bs', 'less', 'html', 'watch']);
+gulp.task('default', ['image', 'bs', 'scripts', 'less', 'html', 'watch']);
