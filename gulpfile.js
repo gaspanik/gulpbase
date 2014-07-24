@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     pattern: ['gulp-*', 'gulp.*'],
     replaceString: /\bgulp[\-.]/
   }),
+  runSequence = require('run-sequence');
   browserSync = require('browser-sync');
 
 /*  Config for your environment */
@@ -91,6 +92,17 @@ gulp.task('image', function() {
       optimizationLevel: 3
     })) // See gulp-imagemin page.
   .pipe(gulp.dest(paths.imgDir));
+});
+
+
+// Sequential tasks demo. Try to run 'npm run-script gulpbuild'
+
+gulp.task('build', function() {
+  runSequence(
+    'image',
+    'html',
+    ['less', 'scripts'] // less and scripts task in parallel.
+  );
 });
 
 // If you would like to use Sass/SCSS, toggle 'less' to 'scss'.

@@ -1,31 +1,33 @@
 {
   "name": "gulpbase",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
     "start": "gulp",
+    "gulpbuild": "gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Masaaki Komori",
   "license": "MIT",
   "devDependencies": {
+    "run-sequence": "*",
     "browser-sync": "*",
-    "gulp-load-plugins": "*",
-    "gulp-concat": "*",
-    "gulp-uglify": "*",
-    "gulp-newer": "*",
-    "gulp-changed": "*",
-    "gulp-imagemin": "*",
-    "gulp-prettify": "*",
-    "gulp-csso": "*",
-    "gulp-rename": "*",
+    "gulp": "*",
     "gulp-autoprefixer": "*",
+    "gulp-changed": "*",
+    "gulp-concat": "*",
+    "gulp-csso": "*",
+    "gulp-imagemin": "*",
+    "gulp-jade": "*",
+    "gulp-less": "*",
+    "gulp-load-plugins": "*",
+    "gulp-newer": "*",
+    "gulp-prettify": "*",
+    "gulp-rename": "*",
     "gulp-ruby-sass": "*",
     "gulp-sourcemaps": "*",
-    "gulp-less": "*",
-    "gulp-jade": "*",
-    "marked": "*",
-    "gulp": "*"
+    "gulp-uglify": "*",
+    "marked": "*"
   }
 }

@@ -21,6 +21,6 @@ to
 
 > .pipe($.autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
 
-## Chagelog 0.0.8
+## Chagelog 0.1.0
 
-* Add gulp-newer.
+* Add Run-Sequence demo.
