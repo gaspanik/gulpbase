@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     pattern: ['gulp-*', 'gulp.*'],
     replaceString: /\bgulp[\-.]/
   }),
-  runSequence = require('run-sequence');
+  runSequence = require('run-sequence'),
   browserSync = require('browser-sync');
 
 /*  Config for your environment */
