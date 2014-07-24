@@ -9,7 +9,7 @@ var gulp = require('gulp'),
 /*  Config for your environment */
 
 var paths = {
-  "tplSrc": "_templates/*.jade", // change your template extension.
+  "tplSrc": "_templates/*.jade",
   "lessSrc": "_less/*.less",
   "scssSrc": "_scss/*.scss",
   "jsSrc": "_js/*.js",
@@ -91,7 +91,7 @@ gulp.task('image', function() {
     .pipe($.imagemin({
       optimizationLevel: 3
     })) // See gulp-imagemin page.
-  .pipe(gulp.dest(paths.imgDir));
+    .pipe(gulp.dest(paths.imgDir));
 });
 
 
