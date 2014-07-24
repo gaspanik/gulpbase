@@ -95,7 +95,7 @@ gulp.task('image', function() {
 });
 
 
-// Sequential tasks demo. Try to run 'npm run-script gulpbuild'
+// Sequential tasks demo. Try to run 'npm run-script gulpbuild' or 'gulp build'.
 
 gulp.task('build', function() {
   runSequence(
