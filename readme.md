@@ -15,12 +15,12 @@ Run gulp.
 
 You would like to autoprefix specific browsers, open gulpfile.js and edit '.pipe(autoprefixer())' line.
 
-> .pipe($.autoprefixer('last 2 version'))
+> .pipe($.autoprefixer({ browsers: ['last 2 versions'] }))
 
 to
 
-> .pipe($.autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+> .pipe($.autoprefixer({ browsers: ['last 2 versions', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'] }))
 
-## Chagelog 0.1.1
+## Chagelog 0.2.0
 
-* Add run-sequence demo (and minor tweaks).
+* Update dependencies and fixed some bugs.
